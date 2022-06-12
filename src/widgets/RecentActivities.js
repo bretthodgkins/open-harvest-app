@@ -15,7 +15,7 @@ import Popovers from '../components/bootstrap/Popovers';
 
 const RecentActivities = () => {
 	return (
-		<Card stretch>
+		<Card>
 			<CardHeader>
 				<CardLabel icon='NotificationsActive' iconColor='warning'>
 					<CardTitle tag='h4' className='h5'>
