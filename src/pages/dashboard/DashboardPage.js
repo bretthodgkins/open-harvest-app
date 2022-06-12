@@ -4,18 +4,26 @@ import PageWrapper from '../../layout/PageWrapper/PageWrapper';
 import Page from '../../layout/Page/Page';
 import Popovers from '../../components/bootstrap/Popovers';
 
+import RecentActivities from '../../widgets/RecentActivities';
+import Stats from '../../widgets/Stats';
+import Switches from '../../widgets/Switches';
+
 const DashboardPage = () => {
 	return (
 		<PageWrapper title='Dashboard Page'>
-			<Page>
+			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-12 mb-3'>
-						<Popovers
-							title='DashboardPage.js'
-							desc={<code>src/pages/dashboard/DashboardPage.js</code>}>
-							Page
-						</Popovers>
-						<code className='ps-3'>DashboardPage.js</code>
+					<div className='col-xl-4'>
+						<Stats />
+						<RecentActivities />
+					</div>
+					<div className='col-xxl-4'>
+						<RecentActivities />
+						<Switches />
+					</div>
+					<div className='col-xxl-4'>
+						<Switches />
+						<RecentActivities />
 					</div>
 				</div>
 			</Page>

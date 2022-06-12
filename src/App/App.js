@@ -7,7 +7,6 @@ import { ToastProvider } from 'react-toast-notifications';
 import { TourProvider } from '@reactour/tour';
 import ThemeContext from '../contexts/themeContext';
 
-import Aside from '../layout/Aside/Aside';
 import Wrapper from '../layout/Wrapper/Wrapper';
 import Portal from '../layout/Portal/Portal';
 import { demoPages, layoutMenu } from '../menu';
@@ -87,7 +86,7 @@ const App = () => {
 							{withOutAsidePages.map((path) => (
 								<Route key={path} path={path} />
 							))}
-							<Route path='*' element={<Aside />} />
+							<Route path='*' />
 						</Routes>
 						<Wrapper />
 					</div>

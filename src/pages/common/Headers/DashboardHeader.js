@@ -1,4 +1,6 @@
 import React, { useLayoutEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import Header, { HeaderLeft, HeaderRight } from '../../../layout/Header/Header';
 import Popovers from '../../../components/bootstrap/Popovers';
@@ -12,6 +14,7 @@ import Dropdown, {
 } from '../../../components/bootstrap/Dropdown';
 import showNotification from '../../../components/extras/showNotification';
 import Icon from '../../../components/icon/Icon';
+import Badge from '../../../components/bootstrap/Badge';
 import Spinner from '../../../components/bootstrap/Spinner';
 
 const DashboardHeader = () => {
@@ -47,23 +50,66 @@ const DashboardHeader = () => {
 	return (
 		<Header>
 			<HeaderLeft>
-				<Popovers
-					title='DashboardHeader.js'
-					desc={<code>src/pages/common/Headers/DashboardHeader.js</code>}>
-					HeaderLeft
-				</Popovers>
-				<code>DashboardHeader.js</code>
+				<div className='row g-3 align-items-center'>
+						<div className={classNames('fs-3', 'col-auto', 'fw-bold', {
+								'text-dark': !darkModeStatus,
+							})}>
+							OpenHarvest
+					</div>
+					<div className='col-auto'>
+						<Dropdown>
+							<DropdownToggle hasIcon={false}>
+								<Button color='light' isLight icon='Public'>
+									Fitzroy Garage (AUS)
+								</Button>
+							</DropdownToggle>
+							<DropdownMenu>
+								<DropdownItem isText>Locations</DropdownItem>
+								<DropdownItem>
+									<NavLink to='/components/popovers'>
+										<Icon icon='Public' /> Fitzroy Garage (AUS)
+									</NavLink>
+								</DropdownItem>
+								<DropdownItem isDivider />
+								<DropdownItem isHeader>Want to get involved?</DropdownItem>
+								<DropdownItem>
+									<NavLink to='/components/popovers'>
+										<Icon icon='Send' /> Get in touch
+									</NavLink>
+								</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
+					</div>
+				</div>
 			</HeaderLeft>
 
 			<HeaderRight>
 				<div className='row g-3 align-items-center'>
 					<div className='col-auto'>
-						<Popovers
-							title='DashboardHeader.js'
-							desc={<code>src/pages/common/Headers/DashboardHeader.js</code>}>
-							HeaderRight
-						</Popovers>
-						<code className='ps-3'>DashboardHeader.js</code>
+						<Dropdown>
+							<DropdownToggle hasIcon={false}>
+								<Button color='success' icon='Circle'>
+									250 SEED
+								</Button>
+							</DropdownToggle>
+							<DropdownMenu isAlignmentEnd>
+								{/* <DropdownItem>
+									<NavLink to='/components/popovers'>
+										<Icon icon='Circle' /> 250 SEED
+									</NavLink>
+								</DropdownItem> */}
+								<DropdownItem isText>OpenHarvest's native token</DropdownItem>
+								<DropdownItem isDivider />
+								<DropdownItem isHeader>Need more tokens?</DropdownItem>
+								<DropdownItem>
+									<a href='https://xdai.colony.io/colony/oh'  target='_blank' rel='noreferrer noopener'>
+										<div className='col text-nowrap overflow-hidden text-overflow-ellipsis'>
+											<Icon icon='Workspaces' /> Contribute to our DAO
+										</div>
+									</a>
+								</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
 					</div>
 					{/* Dark Mode */}
 					<div className='col-auto'>
