@@ -33,7 +33,7 @@ const Stats = () => {
 							className={`d-flex align-items-center bg-l${darkModeStatus ? 'o25' : '10'
 								}-warning rounded-2 p-3`}>
 							<div className='flex-shrink-0'>
-								<Icon icon='DoneAll' size='3x' color='warning' />
+								<Icon icon='Thermostat' size='3x' color='warning' />
 							</div>
 							<div className='flex-grow-1 ms-3'>
 								<div className='fw-bold fs-3 mb-0'>17°C</div>
@@ -48,7 +48,7 @@ const Stats = () => {
 							className={`d-flex align-items-center bg-l${darkModeStatus ? 'o25' : '10'
 								}-info rounded-2 p-3`}>
 							<div className='flex-shrink-0'>
-								<Icon icon='Savings' size='3x' color='info' />
+								<Icon icon='WaterDrop' size='3x' color='info' />
 							</div>
 							<div className='flex-grow-1 ms-3'>
 								<div className='fw-bold fs-3 mb-0'>6%</div>
@@ -63,12 +63,12 @@ const Stats = () => {
 							className={`d-flex align-items-center bg-l${darkModeStatus ? 'o25' : '10'
 								}-primary rounded-2 p-3`}>
 							<div className='flex-shrink-0'>
-								<Icon icon='Star' size='3x' color='primary' />
+								<Icon icon='Water' size='3x' color='primary' />
 							</div>
 							<div className='flex-grow-1 ms-3'>
-								<div className='fw-bold fs-3 mb-0'>4.96</div>
+								<div className='fw-bold fs-3 mb-0'>39.47L</div>
 								<div className='text-muted mt-n2 truncate-line-1'>
-									Rating
+									Water Remaining
 								</div>
 							</div>
 						</div>
@@ -78,7 +78,7 @@ const Stats = () => {
 							className={`d-flex align-items-center bg-l${darkModeStatus ? 'o25' : '10'
 								}-success rounded-2 p-3`}>
 							<div className='flex-shrink-0'>
-								<Icon icon='Timer' size='3x' color='success' />
+								<Icon icon='CalendarToday' size='3x' color='success' />
 							</div>
 							<div className='flex-grow-1 ms-3'>
 								<div className='fw-bold fs-3 mb-0'>21 days</div>

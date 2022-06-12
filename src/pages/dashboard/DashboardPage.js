@@ -7,23 +7,23 @@ import Popovers from '../../components/bootstrap/Popovers';
 import LiveStream from '../../widgets/LiveStream';
 import RecentActivities from '../../widgets/RecentActivities';
 import Stats from '../../widgets/Stats';
-import Switches from '../../widgets/Switches';
+import AirControl from '../../widgets/AirControl';
+import LightControl from '../../widgets/LightControl';
 
 const DashboardPage = () => {
 	return (
 		<PageWrapper title='Dashboard Page'>
 			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-xl-3'>
+					<div className='col-xl-5'>
 						<Stats />
-						<RecentActivities />
-					</div>
-					<div className='col-xxl-6'>
-						<LiveStream />
-						<Switches />
 					</div>
 					<div className='col-xxl-3'>
-						<Switches />
+						<AirControl />
+						<LightControl />
+					</div>
+					<div className='col-xxl-4'>
+						<LiveStream />
 						<RecentActivities />
 					</div>
 				</div>
