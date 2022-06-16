@@ -16,7 +16,7 @@ import Card, {
 import Icon from '../components/icon/Icon';
 import Button from '../components/bootstrap/Button';
 
-import { getIsGreenLightOn, toggleGreenLight } from '../web3'
+import { getIsGreenLightOn, toggleGreenLight, getUserTokenBalance } from '../web3'
 
 
 const LightControl = () => {
@@ -36,6 +36,7 @@ const LightControl = () => {
 	const toggleLightOne = async () => {
 		const rv = await toggleGreenLight();
 		setIsLightOneOn(await getIsGreenLightOn());
+		getUserTokenBalance();
 	}
 
 	const toggleLightTwo = async () => {
@@ -51,6 +52,18 @@ const LightControl = () => {
 		},
 		{ 
 			name: 'Light #2',
+			isLightOn: isLightTwoOn,
+			setIsLightOn: setIsLightTwoOn,
+			onClick: toggleLightTwo,
+		},
+		{ 
+			name: 'Light #3',
+			isLightOn: isLightTwoOn,
+			setIsLightOn: setIsLightTwoOn,
+			onClick: toggleLightTwo,
+		},
+		{ 
+			name: 'Light #4',
 			isLightOn: isLightTwoOn,
 			setIsLightOn: setIsLightTwoOn,
 			onClick: toggleLightTwo,

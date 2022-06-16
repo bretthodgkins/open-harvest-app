@@ -15,16 +15,16 @@ const DashboardPage = () => {
 		<PageWrapper title='Dashboard Page'>
 			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-xl-5'>
+					<div className='col-xl-4'>
 						<Stats />
 					</div>
-					<div className='col-xxl-3'>
-						<AirControl />
+					<div className='col-xxl-4'>
 						<LightControl />
+						<AirControl />
 					</div>
 					<div className='col-xxl-4'>
 						<LiveStream />
-						<RecentActivities />
+						{/* <RecentActivities /> */}
 					</div>
 				</div>
 			</Page>

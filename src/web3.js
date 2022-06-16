@@ -19,10 +19,22 @@ const contract = new ethers.Contract(contractAddress, OpenHarvest.abi, signer);
 // get the token
 const token = new ethers.Contract(tokenAddress, TestSeed.abi, signer);
 
+let lastSeedBalance = 0;
+
 export const getBalance = async () => {
     const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });;
     return ethers.utils.formatEther(await provider.getBalance(account));
 }
+
+export const getLastUserTokenBalance = () => {
+    return lastSeedBalance;
+}
+
+export const getUserTokenBalance = async () => {
+    lastSeedBalance = ethers.utils.formatEther(await contract.getUserTokenBalance());
+    return lastSeedBalance;
+}
+
 
 export const getCount = async () => {
     return contract.getCount();

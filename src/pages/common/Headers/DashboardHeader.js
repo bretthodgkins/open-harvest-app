@@ -18,7 +18,7 @@ import Icon from '../../../components/icon/Icon';
 import Badge from '../../../components/bootstrap/Badge';
 import Spinner from '../../../components/bootstrap/Spinner';
 
-import { getBalance } from '../../../web3'
+import { getUserTokenBalance, getLastUserTokenBalance } from '../../../web3'
 
 const DashboardHeader = () => {
 	const [balance, setBalance] = useState();
@@ -54,10 +54,14 @@ const DashboardHeader = () => {
 
 	useEffect(() => {
 		fetchAndSetBalance();
+		const interval = setInterval(() => {
+			fetchAndSetBalance();
+		  }, 1000);
+		  return () => clearInterval(interval);
 	}, []);
 
 	const fetchAndSetBalance = async () => {
-		setBalance(await getBalance());
+		setBalance(await getUserTokenBalance());
 	  }
 
 	return (
@@ -101,8 +105,8 @@ const DashboardHeader = () => {
 					<div className='col-auto'>
 						<Dropdown>
 							<DropdownToggle hasIcon={false}>
-								<Button color='success' icon='Circle'>
-									{balance} SEED
+								<Button color='success' icon='Circle' onClick={fetchAndSetBalance}>
+									{parseInt(balance, 10)} SEED
 								</Button>
 							</DropdownToggle>
 							<DropdownMenu isAlignmentEnd>
