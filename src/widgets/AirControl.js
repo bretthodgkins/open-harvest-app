@@ -32,7 +32,7 @@ const AirControl = () => {
 					<div className='col-xl-6'>
 						<Button
 							color='success'
-							isOutline='true'
+							// isOutline='true'
 							icon='Air'
 							shadow='none'
 							size='lg'
@@ -43,7 +43,7 @@ const AirControl = () => {
 					<div className='col-xl-6'>
 						<Button
 							color='success'
-							isOutline='true'
+							// isOutline='true'
 							icon='Air'
 							shadow='none'
 							size='lg'
@@ -54,7 +54,7 @@ const AirControl = () => {
 					<div className='col-xl-6'>
 						<Button
 							color='light'
-							isOutline='true'
+							// isOutline='true'
 							icon='WaterDrop'
 							shadow='none'
 							size='lg'
@@ -65,7 +65,7 @@ const AirControl = () => {
 					<div className='col-xl-6'>
 						<Button
 							color='light'
-							isOutline='true'
+							// isOutline='true'
 							icon='WaterDrop'
 							shadow='none'
 							size='lg'

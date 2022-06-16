@@ -1,4 +1,5 @@
 import React, { useLayoutEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +18,11 @@ import Icon from '../../../components/icon/Icon';
 import Badge from '../../../components/bootstrap/Badge';
 import Spinner from '../../../components/bootstrap/Spinner';
 
+import { getBalance } from '../../../web3'
+
 const DashboardHeader = () => {
+	const [balance, setBalance] = useState();
+
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
 	const styledBtn = {
 		color: darkModeStatus ? 'dark' : 'light',
@@ -46,6 +51,14 @@ const DashboardHeader = () => {
 	useLayoutEffect(() => {
 		document.documentElement.setAttribute('lang', i18n.language);
 	});
+
+	useEffect(() => {
+		fetchAndSetBalance();
+	}, []);
+
+	const fetchAndSetBalance = async () => {
+		setBalance(await getBalance());
+	  }
 
 	return (
 		<Header>
@@ -89,7 +102,7 @@ const DashboardHeader = () => {
 						<Dropdown>
 							<DropdownToggle hasIcon={false}>
 								<Button color='success' icon='Circle'>
-									250 SEED
+									{balance} SEED
 								</Button>
 							</DropdownToggle>
 							<DropdownMenu isAlignmentEnd>

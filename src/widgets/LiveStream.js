@@ -41,8 +41,7 @@ const LiveStream = () => {
 							className='transition-base rounded-2 mb-0 text-dark bg-black'
 							stretch
 							shadow='lg'
-							borderColor='danger'
-							borderSize='0'>
+							borderColor='danger'>
 							<CardBody>
 								<YouTube videoId="5qap5aO4i9A" opts={opts} />
 							</CardBody>
