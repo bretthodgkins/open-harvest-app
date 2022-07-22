@@ -16,17 +16,17 @@ const DashboardPage = () => {
 		<PageWrapper title='Dashboard Page'>
 			<Page container='fluid'>
 				<div className='row'>
-					<div className='col-xl-4'>
+					<div className='col-xxl-4'>
 						<Stats />
+						<AirControl />
 					</div>
-					<div className='col-xxl-5'>
+					<div className='col-xxl-4'>
 						<LiveStream />
-						<LightControl />
-						{/* <AirControl /> */}
+						<RecentActivities />
 					</div>
-					<div className='col-xxl-3'>
+					<div className='col-xxl-4'>
 						<SensorCharts />
-						{/* <RecentActivities /> */}
+						<LightControl />
 					</div>
 				</div>
 			</Page>

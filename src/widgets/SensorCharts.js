@@ -19,7 +19,12 @@ const SensorCharts = () => {
 	const { darkModeStatus } = useDarkMode();
 
 	return (
-		<Carousel rounded={3} interval={20000} isHoverPause isDark={!darkModeStatus}>
+		<Carousel
+			className='carousel-charts'
+			rounded={3}
+			interval={20000}
+			isHoverPause
+			isDark={!darkModeStatus}>
 			<CarouselSlide className='carousel-bg-dark'>
 				<CardHeader className='carousel-bg-dark'>
 					<CardLabel icon='StackedLineChart'>

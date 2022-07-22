@@ -12,10 +12,9 @@ import Timeline, { TimelineItem } from '../components/extras/Timeline';
 import Icon from '../components/icon/Icon';
 import Popovers from '../components/bootstrap/Popovers';
 
-
 const RecentActivities = () => {
 	return (
-		<Card stretch>
+		<Card>
 			<CardHeader>
 				<CardLabel icon='NotificationsActive' iconColor='success'>
 					<CardTitle tag='h4' className='h5'>
@@ -26,14 +25,10 @@ const RecentActivities = () => {
 			</CardHeader>
 			<CardBody isScrollable>
 				<Timeline>
-					<TimelineItem
-						label={moment().add(-0.25, 'hours').format('LT')}
-						color='primary'>
+					<TimelineItem label={moment().add(-0.25, 'hours').format('LT')} color='primary'>
 						Extended license purchased from France.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-4.54, 'hours').format('LT')}
-						color='success'>
+					<TimelineItem label={moment().add(-4.54, 'hours').format('LT')} color='success'>
 						<Popovers desc='5 stars' trigger='hover'>
 							<span>
 								<Icon icon='StarFill' color='warning' />
@@ -45,24 +40,16 @@ const RecentActivities = () => {
 						</Popovers>
 						<b>, a new rating has been received.</b>
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-9.34, 'hours').format('LT')}
-						color='warning'>
+					<TimelineItem label={moment().add(-9.34, 'hours').format('LT')} color='warning'>
 						Customer's problem solved.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-1, 'day').fromNow()}
-						color='primary'>
+					<TimelineItem label={moment().add(-1, 'day').fromNow()} color='primary'>
 						Regular license purchased from United Kingdom.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-1, 'day').fromNow()}
-						color='primary'>
+					<TimelineItem label={moment().add(-1, 'day').fromNow()} color='primary'>
 						Regular license purchased from Italy.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-2, 'day').fromNow()}
-						color='info'>
+					<TimelineItem label={moment().add(-2, 'day').fromNow()} color='info'>
 						<span className='text-muted'>
 							New version released.{' '}
 							<a href='/' className='fw-bold'>
@@ -70,20 +57,13 @@ const RecentActivities = () => {
 							</a>
 						</span>
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-3, 'day').fromNow()}
-						color='danger'>
+					<TimelineItem label={moment().add(-3, 'day').fromNow()} color='danger'>
 						Market research meeting for new product.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-7, 'day').fromNow()}
-						color='secondary'>
-						Updating, compiling and going live the product introduction
-						page.
+					<TimelineItem label={moment().add(-7, 'day').fromNow()} color='secondary'>
+						Updating, compiling and going live the product introduction page.
 					</TimelineItem>
-					<TimelineItem
-						label={moment().add(-8, 'day').fromNow()}
-						color='primary'>
+					<TimelineItem label={moment().add(-8, 'day').fromNow()} color='primary'>
 						Regular license purchased from Germany.
 					</TimelineItem>
 				</Timeline>
