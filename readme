@@ -1,0 +1,7 @@
+npm install
+
+RUN LOCALLY
+npm run start-hardhat
+npm run contract-deploy-test-seed-local
+npm run contract-deploy-local
+npm start

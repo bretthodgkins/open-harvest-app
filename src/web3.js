@@ -31,8 +31,13 @@ export const getLastUserTokenBalance = () => {
 }
 
 export const getUserTokenBalance = async () => {
-    lastSeedBalance = ethers.utils.formatEther(await contract.getUserTokenBalance());
-    return lastSeedBalance;
+    try {
+        lastSeedBalance = ethers.utils.formatEther(await contract.getUserTokenBalance());
+        return lastSeedBalance;
+    } catch(e) {
+        console.log('Warn: Unable to fetch user token balance');
+        return false;
+    }
 }
 
 
@@ -41,7 +46,13 @@ export const getCount = async () => {
 }
 
 export const getIsGreenLightOn = async () => {
-    return contract.isGreenLightOn();
+    try {
+        const isGreenLightOn = await contract.isGreenLightOn();
+        return isGreenLightOn;
+    } catch(e) {
+        console.log('Warn: Unable to get green light state');
+        return false;
+    }
 }
 
 export const increment = async () => {

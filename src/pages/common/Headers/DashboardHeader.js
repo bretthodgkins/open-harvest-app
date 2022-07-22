@@ -1,5 +1,4 @@
-import React, { useLayoutEffect } from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -15,13 +14,14 @@ import Dropdown, {
 } from '../../../components/bootstrap/Dropdown';
 import showNotification from '../../../components/extras/showNotification';
 import Icon from '../../../components/icon/Icon';
-import Badge from '../../../components/bootstrap/Badge';
 import Spinner from '../../../components/bootstrap/Spinner';
 
-import { getUserTokenBalance, getLastUserTokenBalance } from '../../../web3'
+import { getUserTokenBalance, getLastUserTokenBalance } from '../../../web3';
 
 const DashboardHeader = () => {
 	const [balance, setBalance] = useState();
+	const [isWalletConnected, setIsWalletConnected] = useState(true);
+	const [intervalId, setIntervalId] = useState(0);
 
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
 	const styledBtn = {
@@ -53,25 +53,35 @@ const DashboardHeader = () => {
 	});
 
 	useEffect(() => {
-		fetchAndSetBalance();
-		const interval = setInterval(() => {
-			fetchAndSetBalance();
-		  }, 1000);
-		  return () => clearInterval(interval);
+		const newIntervalId = setInterval(async () => {
+			let result = await getUserTokenBalance();
+			if (result === false) {
+				result = 0;
+				setIsWalletConnected(false);
+			}
+			setBalance(result);
+		}, 1000);
+		setIntervalId(newIntervalId);
+
+		return () => clearInterval(newIntervalId);
 	}, []);
 
-	const fetchAndSetBalance = async () => {
-		setBalance(await getUserTokenBalance());
-	  }
+	useEffect(() => {
+		if (intervalId && !isWalletConnected) {
+			clearInterval(intervalId);
+			setIntervalId(0);
+		}
+	}, [intervalId, isWalletConnected]);
 
 	return (
 		<Header>
 			<HeaderLeft>
 				<div className='row g-3 align-items-center'>
-						<div className={classNames('fs-3', 'col-auto', 'fw-bold', {
-								'text-dark': !darkModeStatus,
-							})}>
-							OpenHarvest
+					<div
+						className={classNames('fs-3', 'col-auto', 'fw-bold', {
+							'text-dark': !darkModeStatus,
+						})}>
+						OpenHarvest
 					</div>
 					<div className='col-auto'>
 						<Dropdown>
@@ -105,8 +115,10 @@ const DashboardHeader = () => {
 					<div className='col-auto'>
 						<Dropdown>
 							<DropdownToggle hasIcon={false}>
-								<Button color='success' icon='Circle' onClick={fetchAndSetBalance}>
-									{parseInt(balance, 10)} SEED
+								<Button color='success' icon='Circle'>
+									{isWalletConnected
+										? `${parseInt(balance, 10)} SEED`
+										: 'Not Connected'}
 								</Button>
 							</DropdownToggle>
 							<DropdownMenu isAlignmentEnd>
@@ -119,7 +131,10 @@ const DashboardHeader = () => {
 								<DropdownItem isDivider />
 								<DropdownItem isHeader>Need more tokens?</DropdownItem>
 								<DropdownItem>
-									<a href='https://xdai.colony.io/colony/oh'  target='_blank' rel='noreferrer noopener'>
+									<a
+										href='https://xdai.colony.io/colony/oh'
+										target='_blank'
+										rel='noreferrer noopener'>
 										<div className='col text-nowrap overflow-hidden text-overflow-ellipsis'>
 											<Icon icon='Workspaces' /> Contribute to our DAO
 										</div>

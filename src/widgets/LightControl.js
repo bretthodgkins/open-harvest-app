@@ -17,11 +17,14 @@ import Icon from '../components/icon/Icon';
 import Button from '../components/bootstrap/Button';
 
 import { getIsGreenLightOn, toggleGreenLight, getUserTokenBalance } from '../web3'
+import { setDeviceState } from '../controller'
 
 
 const LightControl = () => {
 	const [isLightOneOn, setIsLightOneOn] = useState(false);
 	const [isLightTwoOn, setIsLightTwoOn] = useState(false);
+	const [isLightThreeOn, setIsLightThreeOn] = useState(false);
+	const [isLightFourOn, setIsLightFourOn] = useState(false);
 
 	const { darkModeStatus } = useDarkMode();
 
@@ -34,13 +37,35 @@ const LightControl = () => {
 	}
 
 	const toggleLightOne = async () => {
-		const rv = await toggleGreenLight();
-		setIsLightOneOn(await getIsGreenLightOn());
+		// const rv = await toggleGreenLight();
+		// setIsLightOneOn(await getIsGreenLightOn());
+		const rv = await setDeviceState('Plug 1', !isLightOneOn);
+		setIsLightOneOn(!isLightOneOn);
 		getUserTokenBalance();
 	}
 
 	const toggleLightTwo = async () => {
-		console.log('not yet implemented');
+		// const rv = await toggleGreenLight();
+		// setIsLightOneOn(await getIsGreenLightOn());
+		const rv = await setDeviceState('Plug 2', !isLightTwoOn);
+		setIsLightTwoOn(!isLightTwoOn);
+		getUserTokenBalance();
+	}
+
+	const toggleLightThree = async () => {
+		// const rv = await toggleGreenLight();
+		// setIsLightOneOn(await getIsGreenLightOn());
+		const rv = await setDeviceState('Plug 1', !isLightThreeOn);
+		setIsLightThreeOn(!isLightThreeOn);
+		getUserTokenBalance();
+	}
+
+	const toggleLightFour = async () => {
+		// const rv = await toggleGreenLight();
+		// setIsLightOneOn(await getIsGreenLightOn());
+		const rv = await setDeviceState('Plug 3', !isLightFourOn);
+		setIsLightFourOn(!isLightFourOn);
+		getUserTokenBalance();
 	}
 
 	const allLights = [
@@ -58,15 +83,15 @@ const LightControl = () => {
 		},
 		{ 
 			name: 'Light #3',
-			isLightOn: isLightTwoOn,
-			setIsLightOn: setIsLightTwoOn,
-			onClick: toggleLightTwo,
+			isLightOn: isLightThreeOn,
+			setIsLightOn: setIsLightThreeOn,
+			onClick: toggleLightThree,
 		},
 		{ 
 			name: 'Light #4',
-			isLightOn: isLightTwoOn,
-			setIsLightOn: setIsLightTwoOn,
-			onClick: toggleLightTwo,
+			isLightOn: isLightFourOn,
+			setIsLightOn: setIsLightFourOn,
+			onClick: toggleLightFour,
 		},
 	];
 
