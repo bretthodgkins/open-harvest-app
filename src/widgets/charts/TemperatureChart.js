@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import useDarkMode from '../hooks/useDarkMode';
+import Chart from '../../components/extras/Chart';
+import { getSensorData, setSensorData } from '../../controller';
 
-import Card, {
-	CardActions,
-	CardBody,
-	CardHeader,
-	CardLabel,
-	CardTitle,
-} from '../components/bootstrap/Card';
-import Chart from '../components/extras/Chart';
-import { getSensorData, setSensorData } from '../controller';
-
-const Temperature = () => {
-	const { darkModeStatus } = useDarkMode();
+const TemperatureChart = () => {
 	const [temperatureData, setTemperatureData] = useState([]);
 
 	const [state] = useState({
@@ -24,7 +14,7 @@ const Temperature = () => {
 		],
 		options: {
 			chart: {
-				id: 'realtime',
+				id: 'temperature',
 				height: 150,
 				type: 'line',
 				animations: {
@@ -60,6 +50,9 @@ const Temperature = () => {
 				labels: {
 					show: false,
 				},
+				axisTicks: {
+					show: false,
+				},
 			},
 			yaxis: {
 				min: -10,
@@ -79,7 +72,7 @@ const Temperature = () => {
 			const sensorData = await getSensorData();
 			if (sensorData) {
 				// eslint-disable-next-line no-undef
-				ApexCharts.exec('realtime', 'updateSeries', [
+				ApexCharts.exec('temperature', 'updateSeries', [
 					{
 						data: sensorData.temperature,
 					},
@@ -87,31 +80,19 @@ const Temperature = () => {
 				setTemperatureData(sensorData.temperature);
 				setSensorData('temperature', Math.random() * 5 + 10);
 			}
-		}, 100);
+		}, 500);
 
 		return () => clearInterval(newIntervalId);
 	}, [temperatureData]);
 
 	return (
-		<Card>
-			<CardHeader>
-				<CardLabel icon='StackedLineChart'>
-					<CardTitle>Temperature</CardTitle>
-				</CardLabel>
-				<CardActions>
-					Last updated <strong>June 12</strong>
-				</CardActions>
-			</CardHeader>
-			<CardBody>
-				<Chart
-					series={state.series}
-					options={state.options}
-					type={state.options.chart.type}
-					height={state.options.chart.height}
-				/>
-			</CardBody>
-		</Card>
+		<Chart
+			series={state.series}
+			options={state.options}
+			type={state.options.chart.type}
+			height={state.options.chart.height}
+		/>
 	);
 };
 
-export default Temperature;
+export default TemperatureChart;

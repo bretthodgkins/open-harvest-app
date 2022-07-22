@@ -7,7 +7,7 @@ import Popovers from '../../components/bootstrap/Popovers';
 import LiveStream from '../../widgets/LiveStream';
 import RecentActivities from '../../widgets/RecentActivities';
 import Stats from '../../widgets/Stats';
-import Temperature from '../../widgets/Temperature';
+import SensorCharts from '../../widgets/SensorCharts';
 import AirControl from '../../widgets/AirControl';
 import LightControl from '../../widgets/LightControl';
 
@@ -25,7 +25,7 @@ const DashboardPage = () => {
 						{/* <AirControl /> */}
 					</div>
 					<div className='col-xxl-3'>
-						<Temperature />
+						<SensorCharts />
 						{/* <RecentActivities /> */}
 					</div>
 				</div>
