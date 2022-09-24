@@ -81,7 +81,7 @@ const DashboardHeader = () => {
 						className={classNames('fs-3', 'col-auto', 'fw-bold', {
 							'text-dark': !darkModeStatus,
 						})}>
-						OpenHarvest
+						FedUp.Farm
 					</div>
 					<div className='col-auto'>
 						<Dropdown>
@@ -127,7 +127,7 @@ const DashboardHeader = () => {
 										<Icon icon='Circle' /> 250 SEED
 									</NavLink>
 								</DropdownItem> */}
-								<DropdownItem isText>OpenHarvest's native token</DropdownItem>
+								<DropdownItem isText>FedUp's native token</DropdownItem>
 								<DropdownItem isDivider />
 								<DropdownItem isHeader>Need more tokens?</DropdownItem>
 								<DropdownItem>

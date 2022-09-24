@@ -55,9 +55,12 @@ const TemperatureChart = () => {
 				},
 			},
 			yaxis: {
-				min: -10,
-				max: 35,
-				tickAmount: 3,
+				// min: -10,
+				// max: 35,
+				// tickAmount: 3,
+				min: 0,
+				max: 20,
+				tickAmount: 5,
 				labels: {
 					formatter: (value) => {
 						return `${value}°C`;
@@ -74,11 +77,11 @@ const TemperatureChart = () => {
 				// eslint-disable-next-line no-undef
 				ApexCharts.exec('temperature', 'updateSeries', [
 					{
-						data: sensorData.temperature,
+						data: sensorData.temperature_dh11,
 					},
 				]);
-				setTemperatureData(sensorData.temperature);
-				setSensorData('temperature', Math.random() * 5 + 10);
+				setTemperatureData(sensorData.temperature_dh11);
+				// setSensorData('temperature', Math.random() * 5 + 10);
 			}
 		}, 500);
 

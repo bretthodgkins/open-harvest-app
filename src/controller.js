@@ -1,5 +1,8 @@
+const server = 'http://raspberrypi.local:5000';
+// const server = 'http://localhost:5000';
+
 export const setDeviceState = async (alias, state) => {
-	const response = await fetch('http://localhost:5000/switch', {
+	const response = await fetch(`${server}/switch`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -10,7 +13,7 @@ export const setDeviceState = async (alias, state) => {
 };
 
 export const getDeviceState = async (alias) => {
-	const response = await fetch('http://localhost:5000/switch', {
+	const response = await fetch(`${server}/switch`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
@@ -20,8 +23,22 @@ export const getDeviceState = async (alias) => {
 	return response.json();
 };
 
+export const setPumpState = async (pump, state) => {
+	const response = await fetch(`${server}/pumps/${pump}?state=${state}`, {
+		method: 'PUT',
+	});
+	return response.json();
+};
+
+export const getPumpState = async (alias) => {
+	const response = await fetch(`${server}/pumps`, {
+		method: 'GET',
+	});
+	return response.json();
+};
+
 export const getSensorData = () => {
-	return fetch('http://localhost:5000/sensors', {
+	return fetch(`${server}/sensors`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
@@ -37,7 +54,7 @@ export const getSensorData = () => {
 };
 
 export const setSensorData = (key, value) => {
-	return fetch('http://localhost:5000/sensors', {
+	return fetch(`${server}/sensors`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

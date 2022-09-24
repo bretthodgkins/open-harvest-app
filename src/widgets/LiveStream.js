@@ -13,7 +13,6 @@ import Card, {
 } from '../components/bootstrap/Card';
 import Icon from '../components/icon/Icon';
 
-
 const LiveStream = () => {
 	const { darkModeStatus } = useDarkMode();
 	const opts = {
@@ -36,20 +35,19 @@ const LiveStream = () => {
 				</CardLabel>
 			</CardHeader>
 			<CardBody>
-					<div className='col-md-12'>
-						<Card
-							className='transition-base rounded-2 mb-0 text-dark bg-black'
-							stretch
-							shadow='lg'
-							borderColor='danger'>
-							<CardBody>
-								<YouTube videoId="5qap5aO4i9A" opts={opts} />
-							</CardBody>
-						</Card>
+				<div className='col-md-12'>
+					<Card
+						className='transition-base rounded-2 mb-0 text-dark bg-black'
+						stretch
+						shadow='lg'
+						borderColor='danger'>
+						<CardBody>
+							<YouTube videoId='jfKfPfyJRdk' opts={opts} />
+						</CardBody>
+					</Card>
 				</div>
 			</CardBody>
 		</Card>
-
 	);
 };
 

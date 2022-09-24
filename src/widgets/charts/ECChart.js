@@ -78,7 +78,7 @@ const ECChart = () => {
 					},
 				]);
 				setECData(sensorData.ec);
-				setSensorData('ec', Math.random() * 0.4 + 1.4);
+				// setSensorData('ec', Math.random() * 0.4 + 1.4);
 			}
 		}, 500);
 

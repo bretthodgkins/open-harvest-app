@@ -78,7 +78,7 @@ const PHChart = () => {
 					},
 				]);
 				setPHData(sensorData.ph);
-				setSensorData('ph', Math.random() * 0.5 + 5.5);
+				// setSensorData('ph', Math.random() * 0.5 + 5.5);
 			}
 		}, 500);
 

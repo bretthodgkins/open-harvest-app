@@ -10,6 +10,7 @@ import Stats from '../../widgets/Stats';
 import SensorCharts from '../../widgets/SensorCharts';
 import AirControl from '../../widgets/AirControl';
 import LightControl from '../../widgets/LightControl';
+import PumpControl from '../../widgets/PumpControl';
 
 const DashboardPage = () => {
 	return (
@@ -18,6 +19,7 @@ const DashboardPage = () => {
 				<div className='row'>
 					<div className='col-xxl-4'>
 						<Stats />
+						<PumpControl />
 						<AirControl />
 					</div>
 					<div className='col-xxl-4'>

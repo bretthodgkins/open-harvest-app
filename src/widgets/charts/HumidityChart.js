@@ -55,9 +55,12 @@ const HumidityChart = () => {
 				},
 			},
 			yaxis: {
+				// min: 0,
+				// max: 100,
+				// tickAmount: 4,
 				min: 0,
 				max: 100,
-				tickAmount: 4,
+				tickAmount: 5,
 				labels: {
 					formatter: (value) => {
 						return `${value}%`;
@@ -74,11 +77,11 @@ const HumidityChart = () => {
 				// eslint-disable-next-line no-undef
 				ApexCharts.exec('humidity', 'updateSeries', [
 					{
-						data: sensorData.humidity,
+						data: sensorData.humidity_dh11,
 					},
 				]);
-				setHumidityData(sensorData.humidity);
-				setSensorData('humidity', Math.random() * 20 + 60);
+				setHumidityData(sensorData.humidity_dh11);
+				// setSensorData('humidity', Math.random() * 20 + 60);
 			}
 		}, 500);
 
